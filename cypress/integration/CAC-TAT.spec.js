@@ -65,6 +65,11 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		  .should('have.value', 'mariana.cristhina89@gmail,com')
 		  .clear()  
 		  .should('have.value', '')
+		cy.get('#phone')
+		  .type('1234567890')
+		  .should('have.value', '1234567890')
+		  .clear()  
+		  .should('have.value', '')
 	})
 
 
