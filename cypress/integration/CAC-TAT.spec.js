@@ -32,7 +32,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		cy.get('.error').should('be.visible')
 	})
 
-	it.only('Campo telefone continua vazio quando preenchido com valor não-numérico', function() {
+	it('Campo telefone continua vazio quando preenchido com valor não-numérico', function() {
 		cy.get('#phone').type('abc')
 		  .type('abcdefghij')
 		  .should('have.value', '')
@@ -42,7 +42,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		cy.get('#firstName').type('Mariana')
 		cy.get('#lastName').type('Zeferino')
 		cy.get('#email').type('mariana.cristhina89@gmail,com')
-		cy.get('#phone-checkbox')
+		cy.get('#phone-checkbox').check()
 		cy.get('#open-text-area').type('Teste')
 		cy.contains('button', 'Enviar').click()
 
@@ -72,19 +72,19 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		  .should('have.value', '')
 	})
 
-	it.only('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
+	it('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
 		cy.contains('button', 'Enviar').click()
 
 		cy.get('.error').should('be.visible')
 	})
 
-	it.only('Envia o formulário com sucesso usando um comando customizado', function () {
+	it('Envia o formulário com sucesso usando um comando customizado', function () {
 		cy.fillMandatoryFieldsAndSubmit()
 
 		cy.get('.success').should('be.visible')
 	})	
 
-	it.only('Seleciona um produto (YouTube) por seu texto', function () {
+	it('Seleciona um produto (YouTube) por seu texto', function () {
 		cy.get('#product')
 		  .select('YouTube')
 		  .should('have.value', 'youtube')
@@ -103,14 +103,14 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		  .should('have.value', 'blog')
 	})	
 	
-	it.only('Marca o tipo de atendimento "Feedback"', function () {
+	it('Marca o tipo de atendimento "Feedback"', function () {
 		cy.get('input[type="radio"][value="feedback"]')
 		  .check()
 		  .should('have.value', 'feedback')
 		  
 	})
 	
-	it.only('Marca cada tipo de atendimento"', function () {
+	it('Marca cada tipo de atendimento"', function () {
 		cy.get('input[type="radio"]')
 		  .should('have.length', 3)
 		  .each(function($radio) {
@@ -120,7 +120,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 		  
 	})
 	
-	it.only('Marca ambos checkboxes, depois desmarca o último"', function () {
+	it('Marca ambos checkboxes, depois desmarca o último"', function () {
 		cy.get('input[type="checkbox"]')
 		  .check()
 		  .should('be.checked')
